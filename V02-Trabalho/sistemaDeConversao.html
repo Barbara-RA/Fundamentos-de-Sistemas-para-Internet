@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <link rel="stylesheet" href="css/StyleConversao.css">
+    <script src="script.js"></script>
+    <title>Introdução</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Introdução</a></li>
+                <li><a href="explicando.html">Explicando a Conversão</a></li>
+                <li><a href="sistemaDeConversao.html">Sistema de Conversão</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="converter">
+            <h1>Conversor Decimal para Binário e Hexadecimal</h1>
+            <div>
+                <label for="decimal">Número Decimal:</label>
+                <input type="text" id="decimal">
+                <button onclick="converterDecBin(); converterDecHex()">Converter</button>
+                <p id="resultadoBinario">Binário: </p>
+                <button id="cpBinario" onclick="copiar('resultadoBinario')" class="copiar">Copiar</button>
+                <p id="resultadoHexadecimal">Hexadecimal: </p>
+                <button id="cpHexadecimal" onclick="copiar('resultadoHexadecimal')" class="copiar">Copiar</button>
+                <br>
+                <button onclick="reset()" class="btn">Limpar</button>
+            </div>
+
+            <h1>Conversor Decimal-Binário-Hexadecimal</h1>
+            <div class="geral">
+                <div>
+                    <div>
+                        <label for="decimalNum">Decimal:</label>
+                        <input type="text" id="decimalNum"> <button onclick="converterDec()">Converter</button> <button
+                            onclick="copiar2('decimalNum')" class="copiar">Copiar</button>
+                    </div>
+
+                    <div>
+                        <label for="bin">Binário:</label>
+                        <input type="text" id="bin"> <button onclick="converterBin()">Converter</button> <button
+                            onclick="copiar2('bin')" class="copiar">Copiar</button>
+                    </div>
+
+                    <div>
+                        <label for="hexadecimal">Hexadecimal:</label>
+                        <input type="text" id="hexadecimal"> <button onclick="converterHex()">Converter</button> <button
+                            onclick="copiar2('hexadecimal')" class="copiar">Copiar</button>
+
+                    </div>
+                    <button onclick="reset2()" class="btn">Limpar</button>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Todos os diretos reservados</p>
+        <img src="img/logo.if_footer.png" alt="">
+    </footer>
+
+
+    <script>
+
+        function converterDec() {
+            var decimalNum = document.getElementById("decimalNum").value;
+            var binario = decimalParaBinario(decimalNum);
+            document.getElementById('bin').value = binario;
+            var hex = decimalParaHexadecimal(decimalNum);
+            document.getElementById('hexadecimal').value = hex;
+        }
+
+        function converterBin() {
+            var bin = document.getElementById("bin").value;
+            var decimal = binarioParaDecimal(bin);
+            document.getElementById('decimalNum').value = decimal;
+            var hex = decimalParaHexadecimal(decimal);
+            document.getElementById("hexadecimal").value = hex;
+        }
+
+        function converterHex() {
+            var hexadecimal = document.getElementById("hexadecimal").value;
+            var decimal = hexadecimalParaDecimal(hexadecimal);
+            document.getElementById('decimalNum').value = decimal;
+            var binario = decimalParaBinario(decimal);
+            document.getElementById('bin').value = binario;
+        }
+
+        function converterDecBin() {
+            //console.log('Botão do converter Decimal para Binário');
+            var decimal = document.getElementById("decimal").value;
+            //console.log(decimal);
+            var binario = decimalParaBinario(decimal);
+            //console.log(binario);
+            document.getElementById('resultadoBinario').textContent = "Binário: " + binario;
+        }
+
+        function converterDecHex() {
+            var decimal = document.getElementById("decimal").value;
+            //console.log(decimal);
+            var hex = decimalParaHexadecimal(decimal);
+            //console.log(hex);
+            document.getElementById("resultadoHexadecimal").textContent = "Hexadecimal: " + hex;
+        }
+
+        function converterBinDec() {
+            var binario = document.getElementById("binario").value;
+            var decimal = binarioParaDecimal(binario);
+            document.getElementById("resultadoDecimal").textContent = "Decimal: " + decimal;
+        }
+
+        function converterHexDec() {
+            var hex = document.getElementById("hexadecimalDec").value;
+            var decimal = hexadecimalParaDecimal(hex);
+            document.getElementById("resultadoDecimalHex").textContent = "Decimal: " + decimal;
+        }
+
+        function reset() {
+            document.getElementById('decimal').value = '';
+            document.getElementById('resultadoBinario').textContent = "Binário: ";
+            document.getElementById("resultadoHexadecimal").textContent = "Hexadecimal: ";
+        }
+
+        function reset2() {
+            document.getElementById('decimalNum').value = '';
+            document.getElementById('bin').value = '';
+            document.getElementById('hexadecimal').value = '';
+        }
+
+    </script>
+</body>
+
+</html>
